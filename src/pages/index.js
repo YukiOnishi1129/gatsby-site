@@ -2,6 +2,9 @@ import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 
+/**
+ * Topページ
+ */
 export default ({ data }) => (
   <>
     <header className="header">
@@ -136,15 +139,16 @@ export const query = graphql`
     file(relativePath: { eq: "hero.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1600) {
-          aspectRatio
-          base64
-          sizes
-          src
-          srcSet
-          srcSetWebp
-          srcWebp
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
   }
 `
+
+/**
+ * Fragment
+ * GrapQLクエリを簡略化するための定型文
+ * 例：GatsbyImageSharpFluid_withWebp
+ * 例：GatsbyImageSharpFluid_withWebp_tracedSVG (画像読み込み中はtracedSVGが表示される)
+ */
