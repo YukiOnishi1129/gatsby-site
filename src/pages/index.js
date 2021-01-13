@@ -28,7 +28,11 @@ export default ({ data }) => (
     </header>
     <section className="hero">
       <figure>
-        <Img fluid={data.hero.childImageSharp.fluid} alt="" />
+        <Img
+          fluid={data.hero.childImageSharp.fluid}
+          alt=""
+          style={{ height: "100%" }}
+        />
       </figure>
       <div className="catch">
         <h1>
@@ -92,7 +96,11 @@ export default ({ data }) => (
     <section className="photo">
       <h2 className="sr-only">Photo</h2>
       <figure>
-        <Img fluid={data.berry.childImageSharp.fluid} alt="赤く熟したベリー" />
+        <Img
+          fluid={data.berry.childImageSharp.fluid}
+          alt="赤く熟したベリー"
+          style={{ height: "100%" }}
+        />
       </figure>
     </section>
 
@@ -166,7 +174,7 @@ export const query = graphql`
     }
     berry: file(relativePath: { eq: "berry.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 320) {
+        fluid(maxWidth: 1600) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
