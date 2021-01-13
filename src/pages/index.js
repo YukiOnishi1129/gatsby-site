@@ -1,6 +1,8 @@
 import React from "react"
+import { graphql } from "gatsby"
+import Img from "gatsby-image"
 
-export default () => (
+export default ({ data }) => (
   <>
     <header className="header">
       <div className="container">
@@ -23,7 +25,7 @@ export default () => (
     </header>
     <section className="hero">
       <figure>
-        <img src="/images/hero.jpg" alt="" />
+        <Img fluid={data.file.childImageSharp.fluid} alt="" />
       </figure>
       <div className="catch">
         <h1>
@@ -124,3 +126,25 @@ export default () => (
     </footer>
   </>
 )
+
+/**
+ * クエリ
+ * 1ファイルごとに1つのページクエリしか設定できない
+ */
+export const query = graphql`
+  query {
+    file(relativePath: { eq: "hero.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1600) {
+          aspectRatio
+          base64
+          sizes
+          src
+          srcSet
+          srcSetWebp
+          srcWebp
+        }
+      }
+    }
+  }
+`
