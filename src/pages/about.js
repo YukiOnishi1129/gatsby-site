@@ -12,7 +12,10 @@ export default ({ data }) => (
     <Layout>
       <div className="eyecatch">
         <figure>
-          <img src="images/about.jpg" alt="ブルーベリー＆ヨーグルト" />
+          <Img
+            fluid={data.about.childImageSharp.fluid}
+            alt="ブルーベリー＆ヨーグルト"
+          />
         </figure>
       </div>
       <article className="content">
@@ -56,3 +59,15 @@ export default ({ data }) => (
     </Layout>
   </>
 )
+
+export const query = graphql`
+  query {
+    about: file(relativePath: { eq: "about.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1600) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`
