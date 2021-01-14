@@ -1,6 +1,12 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+  faTwitter,
+  faFacebookSquare,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons"
 
 export default () => {
   /**
@@ -42,19 +48,19 @@ export default () => {
         <ul className="sns">
           <li>
             <a href="https://twitter.com/">
-              <i className="fab fa-twitter"></i>
+              <FontAwesomeIcon icon={faTwitter} />
               <span className="sr-only">Twitter</span>
             </a>
           </li>
           <li>
             <a href="https://facebook.com/">
-              <i className="fab fa-facebook-square"></i>
+              <FontAwesomeIcon icon={faFacebookSquare} />
               <span className="sr-only">Facebook</span>
             </a>
           </li>
           <li>
             <a href="http://instagram.com/">
-              <i className="fab fa-instagram"></i>
+              <FontAwesomeIcon icon={faInstagram} />
               <span className="sr-only">Instagram</span>
             </a>
           </li>
