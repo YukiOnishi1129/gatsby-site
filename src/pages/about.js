@@ -4,6 +4,14 @@ import Img from "gatsby-image"
 
 import Layout from "../components/layout"
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faUtensils, faCheckSquare } from "@fortawesome/free-solid-svg-icons"
+
+// Font AwesomeのCSSを先読みする設定(これをしないとNetlifyにデプロイした際に、fontawesomeのサイズがおかしくなる)
+import { config } from "@fortawesome/fontawesome-svg-core/styles.css"
+// Font Awesomeのコンポーネント内でcssを適用しないようにする設定
+config.autoAddCss = false
+
 /**
  * Topページ
  */
@@ -23,7 +31,7 @@ export default ({ data }) => (
           <h1 className="bar">ESSENTIALSについて</h1>
           <aside className="info">
             <div className="subtitle">
-              <i className="fas fa-utensils" />
+              <FontAwesomeIcon icon={faUtensils} />
               ABOUT ESSENTIALS
             </div>
           </aside>
@@ -32,7 +40,7 @@ export default ({ data }) => (
               体に必要不可欠な食べ物についての情報を発信しているサイトです。「おいしい食材をおいしく食べる」をモットーにしています。特に力を入れているのが、フルーツ、穀物、飲み物の３つです。
             </p>
             <h2>
-              <i className="fas fa-check-square" />
+              <FontAwesomeIcon icon={faCheckSquare} />
               公開している記事
             </h2>
             <p>
@@ -46,7 +54,7 @@ export default ({ data }) => (
               </li>
             </ul>
             <h2>
-              <i className="fas fa-check-square" />
+              <FontAwesomeIcon icon={faCheckSquare} />
               よく聞かれること
             </h2>
             <p>
