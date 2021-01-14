@@ -8,9 +8,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUtensils, faCheckSquare } from "@fortawesome/free-solid-svg-icons"
 
 // Font AwesomeのCSSを先読みする設定(これをしないとNetlifyにデプロイした際に、fontawesomeのサイズがおかしくなる)
-import { config } from "@fortawesome/fontawesome-svg-core/styles.css"
+// import { config } from "@fortawesome/fontawesome-svg-core/styles.css"
 // Font Awesomeのコンポーネント内でcssを適用しないようにする設定
-config.autoAddCss = false
+// config.autoAddCss = false
 
 /**
  * Topページ
