@@ -28,6 +28,13 @@ export default props => {
     ? `${data.site.siteMetadata.siteUrl}${props.pagepath}`
     : data.site.siteMetadata.siteUrl
 
+  const imgUrl = props.pageimg
+    ? `${data.site.siteMetadata.siteUrl}${props.pageimg}`
+    : `${data.site.siteMetadata.siteUrl}/thumb.jpg`
+
+  const imgw = props.pageimgw || 1260
+  const imgh = props.pageimgh || 640
+
   return (
     <Helmet>
       <html lang={data.site.siteMetadata.lang} />
@@ -41,6 +48,10 @@ export default props => {
       <meta property="og:type" contet="website" />
       <meta property="og:locale" content={data.site.siteMetadata.locale} />
       <meta property="fb:app_id" content={data.site.siteMetadata.fbappid} />
+      <meta property="og:image" contet={imgUrl} />
+      <meta property="og:image:width" contet={imgw} />
+      <meta property="og:image:height" contet={imgh} />
+      <meta property="twitter:card" contet="summary_large_image" />
     </Helmet>
   )
 }
