@@ -20,7 +20,10 @@ import SEO from "../components/seo"
 export default ({ data }) => (
   <>
     <Layout>
-      <SEO />
+      <SEO
+        pagetitle="ESSENTIALについて"
+        pagedesc="食べ物についての情報を発信しているサイトです。"
+      />
       <div className="eyecatch">
         <figure>
           <Img
