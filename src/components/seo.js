@@ -1,10 +1,24 @@
 import React from "react"
 import { Helmet } from "react-helmet"
+import { useStaticQuery, graphql } from "gatsby"
 
-export default () => (
-  <Helmet>
-    <html lang="ja" />
-    <title>タイトル</title>
-    <meta name="description" content="説明" />
-  </Helmet>
-)
+export default () => {
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          description
+          lang
+          title
+        }
+      }
+    }
+  `)
+  return (
+    <Helmet>
+      <html lang={data.site.siteMetadata.lang} />
+      <title>{data.site.siteMetadata.title}</title>
+      <meta name="description" content={data.site.siteMetadata.description} />
+    </Helmet>
+  )
+}

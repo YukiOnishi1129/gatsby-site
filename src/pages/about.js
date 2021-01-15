@@ -12,12 +12,15 @@ import { faUtensils, faCheckSquare } from "@fortawesome/free-solid-svg-icons"
 // Font Awesomeのコンポーネント内でcssを適用しないようにする設定
 // config.autoAddCss = false
 
+import SEO from "../components/seo"
+
 /**
- * Topページ
+ * Aboutページ
  */
 export default ({ data }) => (
   <>
     <Layout>
+      <SEO />
       <div className="eyecatch">
         <figure>
           <Img
