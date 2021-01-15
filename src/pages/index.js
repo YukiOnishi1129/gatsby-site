@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 /**
  * Topページ
@@ -10,6 +11,7 @@ import Layout from "../components/layout"
 export default ({ data }) => (
   <>
     <Layout>
+      <SEO />
       <section className="hero">
         <figure>
           <Img
