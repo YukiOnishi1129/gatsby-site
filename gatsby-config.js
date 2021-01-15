@@ -29,7 +29,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `ESSENTIALS エッセンシャルズ`,
-        shot_name: `ESSENTIALS`,
+        short_name: `ESSENTIALS`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#477294`,
