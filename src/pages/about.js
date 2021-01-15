@@ -17,12 +17,13 @@ import SEO from "../components/seo"
 /**
  * Aboutページ
  */
-export default ({ data }) => (
+export default ({ data, location }) => (
   <>
     <Layout>
       <SEO
         pagetitle="ESSENTIALについて"
         pagedesc="食べ物についての情報を発信しているサイトです。"
+        pagepath={location.pathname}
       />
       <div className="eyecatch">
         <figure>

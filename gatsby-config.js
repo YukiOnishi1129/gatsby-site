@@ -10,6 +10,7 @@ module.exports = {
     title: "ESSENTIALS",
     description: "おいしい食材と食事を探求するサイト",
     lang: "ja",
+    siteUrl: `https://zen-payne-c0ec6b.netlify.app/`,
   },
   plugins: [
     `gatsby-transformer-sharp`,
