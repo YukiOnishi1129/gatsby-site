@@ -9,7 +9,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons"
-import { renderRichText } from "gatsby-source-contentful/rich-text"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS } from "@contentful/rich-text-types"
 
 const options = {
@@ -56,7 +56,10 @@ export default ({ data }) => (
           </div>
         </aside>
         <div className="postbody">
-          {renderRichText(data.contentfulBlogPost.content, options)}
+          {documentToReactComponents(
+            data.contentfulBlogPost.content.json,
+            options
+          )}
         </div>
         <ul className="postlink">
           <li className="prev">
@@ -98,7 +101,7 @@ export const query = graphql`
         description
       }
       content {
-        raw
+        json
       }
     }
   }
