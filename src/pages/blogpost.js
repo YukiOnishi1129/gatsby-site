@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Img from "gatsby-image"
 import Layout from "../components/layout"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock, faFolderOpen } from "@fortawesome/free-regular-svg-icons"
@@ -15,7 +16,10 @@ export default ({ data }) => (
   <Layout>
     <div className="eyecatch">
       <figure>
-        <img src="images-baseblog/eyecatch.jpg" alt="アイキャッチ画像の説明" />
+        <Img
+          fluid={data.contentfulBlogPost.eyecatch.fluid}
+          alt={data.contentfulBlogPost.eyecatch.description}
+        />
       </figure>
     </div>
     <article className="content">
@@ -76,6 +80,12 @@ export const query = graphql`
         category
         categorySlug
         id
+      }
+      eyecatch {
+        fluid(maxWidth: 1600) {
+          ...GatsbyContentfulFluid_withWebp
+        }
+        description
       }
     }
   }
