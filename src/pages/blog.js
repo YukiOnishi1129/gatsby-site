@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 
@@ -14,7 +14,7 @@ export default ({ data }) => (
         <div className="posts">
           {data.allContentfulBlogPost.edges.map(({ node }) => (
             <article className="post" key={node.id}>
-              <a href="base-blogpost.html">
+              <Link to={`/blog/post/${node.slug}`}>
                 <figure>
                   <Img
                     fluid={node.eyecatch.fluid}
@@ -23,7 +23,7 @@ export default ({ data }) => (
                   />
                 </figure>
                 <h3>{node.title}</h3>
-              </a>
+              </Link>
             </article>
           ))}
         </div>
@@ -41,6 +41,7 @@ export const query = graphql`
       edges {
         node {
           title
+          slug
           id
           eyecatch {
             fluid(maxWidth: 500) {
