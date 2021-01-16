@@ -2,12 +2,18 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 /**
  * ブログ一覧ページ
  */
-export default ({ data }) => (
+export default ({ data, location }) => (
   <Layout>
+    <SEO
+      pagetitle="ブログ"
+      pagedesc="ESSENTIALSのブログです。"
+      pagepath={location.pathname}
+    />
     <section className="content bloglist">
       <div className="container">
         <h1 className="bar">RECENT POSTS</h1>
