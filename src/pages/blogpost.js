@@ -5,10 +5,23 @@ import Layout from "../components/layout"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock, faFolderOpen } from "@fortawesome/free-regular-svg-icons"
 import {
+  faCheckSquare,
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
+import { BLOCKS } from "@contentful/rich-text-types"
+
+const options = {
+  renderNode: {
+    [BLOCKS.HEADING_2]: (node, children) => (
+      <h2>
+        <FontAwesomeIcon icon={faCheckSquare} />
+        {children}
+      </h2>
+    ),
+  },
+}
 
 /**
  * ブログき記事ページ
@@ -43,7 +56,7 @@ export default ({ data }) => (
           </div>
         </aside>
         <div className="postbody">
-          {renderRichText(data.contentfulBlogPost.content)}
+          {renderRichText(data.contentfulBlogPost.content, options)}
         </div>
         <ul className="postlink">
           <li className="prev">
