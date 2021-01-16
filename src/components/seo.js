@@ -30,7 +30,7 @@ export default props => {
 
   const imgUrl = props.pageimg
     ? `${data.site.siteMetadata.siteUrl}${props.pageimg}`
-    : `${data.site.siteMetadata.siteUrl}/thumb.jpg`
+    : props.blogimg || `${data.site.siteMetadata.siteUrl}/thumb.jpg`
 
   const imgw = props.pageimgw || 1260
   const imgh = props.pageimgh || 640
@@ -45,6 +45,7 @@ export default props => {
       <meta property="og:site_name" content={data.site.siteMetadata.title} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
+      <meta property="og:url" content={url} />
       <meta property="og:type" contet="website" />
       <meta property="og:locale" content={data.site.siteMetadata.locale} />
       <meta property="fb:app_id" content={data.site.siteMetadata.fbappid} />
