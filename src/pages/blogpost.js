@@ -29,8 +29,11 @@ export default ({ data }) => (
           <div className="cat">
             <FontAwesomeIcon icon={faFolderOpen} />
             <ul>
-              <li className="スラッグ">カテゴリーＡ</li>
-              <li className="スラッグ">カテゴリーＢ</li>
+              {data.contentfulBlogPost.category.map(cat => (
+                <li key={cat.id} className={cat.categorySlug}>
+                  {cat.category}
+                </li>
+              ))}
             </ul>
           </div>
         </aside>
@@ -69,6 +72,11 @@ export const query = graphql`
       title
       publishDateJP: publishDate(formatString: "YYYY年MM月DD日")
       publishDate
+      category {
+        category
+        categorySlug
+        id
+      }
     }
   }
 `
