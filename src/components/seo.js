@@ -32,7 +32,7 @@ export default props => {
     ? `${data.site.siteMetadata.siteUrl}${props.pageimg}`
     : props.blogimg || `${data.site.siteMetadata.siteUrl}/thumb.jpg`
 
-  const imgw = props.pageimgw || 1260
+  const imgw = props.pageimgw || 1280
   const imgh = props.pageimgh || 640
 
   return (
@@ -46,13 +46,13 @@ export default props => {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
-      <meta property="og:type" contet="website" />
+      <meta property="og:type" content="website" />
       <meta property="og:locale" content={data.site.siteMetadata.locale} />
       <meta property="fb:app_id" content={data.site.siteMetadata.fbappid} />
-      <meta property="og:image" contet={imgUrl} />
-      <meta property="og:image:width" contet={imgw} />
-      <meta property="og:image:height" contet={imgh} />
-      <meta property="twitter:card" contet="summary_large_image" />
+      <meta property="og:image" content={imgUrl} />
+      <meta property="og:image:width" content={imgw} />
+      <meta property="og:image:height" content={imgh} />
+      <meta name="twitter:card" content="summary_large_image" />
     </Helmet>
   )
 }
