@@ -16,6 +16,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             slug
           }
+          next {
+            title
+            slug
+          }
+          previous {
+            title
+            slug
+          }
         }
       }
     }
@@ -26,13 +34,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  blogresult.data.allContentfulBlogPost.edges.forEach(({ node }) => {
-    createPage({
-      path: `/blog/post/${node.slug}`,
-      component: path.resolve(`./src/templates/blogpost-template.js`),
-      context: {
-        id: node.id,
-      },
-    })
-  })
+  blogresult.data.allContentfulBlogPost.edges.forEach(
+    ({ node, next, previous }) => {
+      createPage({
+        path: `/blog/post/${node.slug}`,
+        component: path.resolve(`./src/templates/blogpost-template.js`),
+        context: {
+          id: node.id,
+          next,
+          previous,
+        },
+      })
+    }
+  )
 }
