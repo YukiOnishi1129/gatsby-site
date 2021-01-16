@@ -8,6 +8,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons"
+import { renderRichText } from "gatsby-source-contentful/rich-text"
 
 /**
  * ブログき記事ページ
@@ -42,11 +43,7 @@ export default ({ data }) => (
           </div>
         </aside>
         <div className="postbody">
-          <p>
-            記事の本文です。記事の本文です。記事の本文です。記事の本文です。記事の本文です。
-            記事の本文です。記事の本文です。記事の本文です。記事の本文です。記事の本文です。
-            記事の本文です。記事の本文です。記事の本文です。記事の本文です。記事の本文です。
-          </p>
+          {renderRichText(data.contentfulBlogPost.content)}
         </div>
         <ul className="postlink">
           <li className="prev">
@@ -86,6 +83,9 @@ export const query = graphql`
           ...GatsbyContentfulFluid_withWebp
         }
         description
+      }
+      content {
+        raw
       }
     }
   }
