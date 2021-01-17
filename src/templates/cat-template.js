@@ -15,13 +15,13 @@ import {
 export default ({ data, location, pageContext }) => (
   <Layout>
     <SEO
-      pagetitle="ブログ"
-      pagedesc="ESSENTIALSのブログです。"
+      pagetitle={`CATEGORY: ${pageContext.catname}`}
+      pagedesc={`「${pageContext.catname}」カテゴリーの記事です。`}
       pagepath={location.pathname}
     />
     <section className="content bloglist">
       <div className="container">
-        <h1 className="bar">RECENT POSTS</h1>
+        <h1 className="bar">CATEGORY: {pageContext.catname}</h1>
         <div className="posts">
           {data.allContentfulBlogPost.edges.map(({ node }) => (
             <article className="post" key={node.id}>

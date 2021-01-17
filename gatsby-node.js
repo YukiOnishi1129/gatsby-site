@@ -29,6 +29,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       allContentfulCategory {
         edges {
           node {
+            category
             categorySlug
             id
           }
@@ -80,6 +81,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       component: path.resolve(`./src/templates/cat-template.js`),
       context: {
         catid: node.id,
+        catname: node.category,
         skip: 0,
         limit: 100,
         currentPage: 1,
