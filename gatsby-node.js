@@ -26,6 +26,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
+      allContentfulCategory {
+        edges {
+          node {
+            category
+            categorySlug
+            id
+            blogpost {
+              title
+            }
+          }
+        }
+      }
     }
   `)
 
@@ -63,6 +75,32 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         isFirst: i + 1 === 1, // 最初のページ
         isLast: i + 1 === blogPages, // 最後のページ
       },
+    })
+  })
+
+  blogresult.data.allContentfulCategory.edges.forEach(({ node }) => {
+    const catPostsPerPage = 6 // 1ページに表示する記事の数
+    const catPosts = node.blogpost.length // 記事の数
+    const catPages = Math.ceil(catPosts / catPostsPerPage) // 記事一覧ページの総数
+
+    Array.from({ length: catPages }).forEach((_, i) => {
+      createPage({
+        path:
+          i === 0
+            ? `/cat/${node.categorySlug}/`
+            : `/cat/${node.categorySlug}/${i + 1}`,
+        component: path.resolve(`./src/templates/cat-template.js`),
+        context: {
+          catid: node.id,
+          catname: node.category,
+          catslug: node.categorySlug,
+          skip: catPostsPerPage * i,
+          limit: catPostsPerPage,
+          currentPage: i + 1,
+          isFirst: i + 1 === 1,
+          isLast: i + 1 === catPages,
+        },
+      })
     })
   })
 }
